@@ -3,6 +3,7 @@ import "./home.css";
 import { SERVER_SIDE_ERROR } from "../../common/constants/messages/error-messages";
 import { GetMovies } from "../../common/services/movie-service";
 import MovieCard from "./movie-card.jsx";
+import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -13,8 +14,17 @@ const HomePage = () => {
     const loadMoviesData = async () => {
       setIsLoading(true);
       try {
-        const moviesData = await GetMovies();
-        setMovies(moviesData.movies);
+        //const moviesData = await GetMovies();
+        //setMovies(moviesData.movies);
+
+        const moviesByGenre = Set();
+
+        MoviesMockData.forEach((movie)=>{
+            movie.genres.forEach((genre)=>{
+
+            });
+        })
+        setMovies(MoviesMockData)
       } catch (error) {
         setErrorMessage(SERVER_SIDE_ERROR);
       } finally {
@@ -27,8 +37,6 @@ const HomePage = () => {
   useEffect(() => {
     document.title = "Thikkiiana City Theater";
   }, []);
-
-  console.log("movies", movies);
 
   return (
     <div className={"home-contaniner"}>

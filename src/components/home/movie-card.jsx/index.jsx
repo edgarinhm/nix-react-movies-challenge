@@ -1,4 +1,5 @@
 const MovieCard = ({ movie }) => {
+    const genres = [];
   return (
     <div key={movie.id}>
         {
