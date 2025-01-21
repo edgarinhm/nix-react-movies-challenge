@@ -9,6 +9,6 @@ describe("App", () => {
 
         screen.debug();
         const titleElement = screen.getByText('Thikkiiana City Theater')
-       /expect(titleElement).toBeInTheDocument();
+        expect(titleElement).toBeInTheDocument();
     });
 })
