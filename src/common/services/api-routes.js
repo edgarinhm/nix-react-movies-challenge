@@ -1,4 +1,7 @@
 
 export const MovieApiUrl = {
-    get: () => "/v1/movies",
+    get: () => "/movies",
   };
+export const SearchMovieApiUrl = {
+    get: (query)=>`/movies?q=${query}`
+}

@@ -5,17 +5,16 @@ import {
   SERVER_SIDE_ERROR,
 } from "../constants/messages/error-messages";
 import useAuth from "../hooks/useAuth";
-import axiosPrivate from "./api-client";
 import {
   NOT_FOUND_CODE,
   SERVER_ERROR_CODE,
 } from "../constants/api-constants";
+import { axiosInstance } from "./api-client";
 
 const ApiProvider = ({ children }) => {
   const { auth } = useAuth();
-
   useEffect(() => {
-    const requestIntercept = axiosPrivate.interceptors.request.use(
+    const requestIntercept = axiosInstance.interceptors.request.use(
       async (config) => {
         if (!config.headers?.Authorization) {
           config.headers.Authorization = `Bearer ${auth?.accessToken}`;
@@ -28,7 +27,7 @@ const ApiProvider = ({ children }) => {
       (error) => Promise.reject(error)
     );
 
-    const responseIntercept = axiosPrivate.interceptors.response.use(
+    const responseIntercept = axiosInstance.interceptors.response.use(
       (response) => {
         return { ...response, data: response.data?.data ?? response.data };
       },
@@ -54,8 +53,8 @@ const ApiProvider = ({ children }) => {
     );
 
     return () => {
-      axiosPrivate.interceptors.request.eject(requestIntercept);
-      axiosPrivate.interceptors.response.eject(responseIntercept);
+      axiosInstance.interceptors.request.eject(requestIntercept);
+      axiosInstance.interceptors.response.eject(responseIntercept);
     };
   }, [auth?.accessToken]);
 
