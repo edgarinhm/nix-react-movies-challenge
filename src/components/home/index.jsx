@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./home.css";
 import { SERVER_SIDE_ERROR } from "../../common/constants/messages/error-messages";
 import { GetMovies } from "../../common/services/movie-service";
+import MovieCard from "./movie-card.jsx";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -36,9 +37,7 @@ const HomePage = () => {
         <div>
           {movies.map((movie) => {
             return (
-              <div key={movie.id}>
-                <div>{movie.title}</div>
-              </div>
+              <MovieCard key={movie.id} movie={movie} />
             );
           })}
         </div>
