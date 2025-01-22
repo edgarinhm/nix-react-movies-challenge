@@ -2,3 +2,11 @@
     display: flex;
     gap: 2rem;
 }
+.movie-title{
+    display: flex;
+    align-items: center;
+   ;
+}
+.movie-title h2{
+    margin-right: 0.5rem
+}
