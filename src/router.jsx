@@ -17,6 +17,14 @@ const Router = () => {
             </Suspense>
           }
         />
+        <Route
+          path={"*"}
+          element={
+            <Suspense fallback={"...Loading"}>
+              <HomePage />
+            </Suspense>
+          }
+        />
       </Route>
     </Routes>
   );
