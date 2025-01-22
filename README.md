@@ -2,6 +2,12 @@
 
 Your assignment is to implement a movie streaming dashboard using JavaScript and React.
 
+### Demo
+* stage: https://edgarinhm.github.io/nix-react-movies-challenge
+
+### Screenshot
+![alt text](image.png)
+
 ### Tasks
 
 -   Implement assignment using:
