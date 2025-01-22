@@ -5,12 +5,15 @@ import { GetMovies } from "../../common/services/movie-service";
 import MovieCard from "./movie-card.jsx";
 import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 import MovieCatergory from "./movie-category/index.jsx";
+import useMovieStorage from "../../common/state-management/movie-storage.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState();
   const [isLoading, setIsLoading] = useState();
   const [genres, setGenres] = useState([]);
+
+  const { setMoviesState } = useMovieStorage();
 
   useEffect(() => {
     const loadMoviesData = async () => {
@@ -27,6 +30,7 @@ const HomePage = () => {
         });
         setGenres([...moviesByGenre]);
         setMovies(MoviesMockData);
+        setMoviesState(MoviesMockData)
       } catch (error) {
         setErrorMessage(SERVER_SIDE_ERROR);
       } finally {
