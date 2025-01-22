@@ -12,13 +12,13 @@ const MovieDetailPage = () => {
 
   return (
     <div className="movie-datail-card">
-      <div className="movie-poster"><img src={movie?.poster} alt={`poster ${movie.title}`} /></div>
+      <div className="movie-poster"><img src={movie?.poster} alt={`poster ${movie?.title}`} /></div>
       <div className="movie-details">
         <div className="movie-title"><h2>{movie?.title}</h2> {movie?.classification}</div>
         <div className="movie-star-rating">{movie?.imdb_rating}</div>
         <div><span>{'year '}{releasedOn.getFullYear()}</span>{' | '}<span>{'length '} {movie?.length}</span>{' | '}<span>{'director '}{movie?.director}</span></div>
-        <div><span>{'cast:'} </span>{movie.cast.join(', ')}</div>
-        <div className="movie-description">{'Movie Description '}{movie.overview}</div>
+        <div><span>{'cast:'} </span>{movie?.cast.join(', ')}</div>
+        <div className="movie-description">{'Movie Description '}{movie?.overview}</div>
       </div>
     </div>
   )
