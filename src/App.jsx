@@ -3,7 +3,7 @@ import Router from "./router";
 
 function App() {
   return (
-    <BrowserRouter basename="/nix-react-movies-challenge">
+    <BrowserRouter>
       <Router />
     </BrowserRouter>
   );
