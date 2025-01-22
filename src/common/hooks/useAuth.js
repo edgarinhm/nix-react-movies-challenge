@@ -7,7 +7,7 @@ import { getUserSessionModel, setUserSession } from "../helpers/auth";
 
 const useAuth = () => {
     const auth = getUserSessionModel();
-    setUserSession({ accessToken: 'Wookie2021' }) //TODO: remove
+    setUserSession({ accessToken: import.meta.env.VITE_API_TOKEN }) //TODO: remove
     const setAuth = (user) => setUserSession(user);
     
     const errorMessages = {
