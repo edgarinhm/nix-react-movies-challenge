@@ -1,3 +1,5 @@
 .home-contaniner{
-    
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
 }

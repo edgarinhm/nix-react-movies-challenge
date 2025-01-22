@@ -40,13 +40,11 @@ const HomePage = () => {
     document.title = "Thikkiiana City Theater";
   }, []);
 
-  console.log("genres", genres);
-
   return (
-    <div className={"home-contaniner"}>
+    <>
       {errorMessage && <div>{errorMessage}</div>}
       {!isLoading && (
-        <div>
+        <>
           {genres.map((genre) => {
             const moviesFiltered = movies.filter((movie) =>
               movie.genres.includes(genre)
@@ -59,9 +57,9 @@ const HomePage = () => {
               />
             );
           })}
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 

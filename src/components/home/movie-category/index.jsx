@@ -1,12 +1,17 @@
 import MovieCard from "../movie-card.jsx";
+import './movie-category.css'
 
 const MovieCatergory = ({ categoryTitle, movies }) => {
   return (
-    <div>
+    <div className="movie-caterogy-container">
       <h6>{categoryTitle}</h6>
-      {movies.map((movie) => {
-        return <MovieCard key={`${categoryTitle}-${movie.id}`} movie={movie} />;
-      })}
+      <div className="movie-caterogy-row">
+        {movies.map((movie) => {
+          return (
+            <MovieCard key={`${categoryTitle}-${movie.id}`} movie={movie} />
+          );
+        })}
+      </div>
     </div>
   );
 };

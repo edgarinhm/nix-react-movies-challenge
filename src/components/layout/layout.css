@@ -1,8 +1,11 @@
 .main-container{
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 .container-layout {
     display: flex;
+    flex-direction: column;
     padding: 2rem;
+    width: 100vw;
   }

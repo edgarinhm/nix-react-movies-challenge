@@ -1,16 +1,10 @@
+import './movie-card.css';
+
 const MovieCard = ({ movie }) => {
-    const genres = [];
-  return (
-    <div key={movie.id}>
-        {
-        movie.genres.map((genre)=>{
-            return (
-                <div key={`${movie.id}-${genre}}`}>genre</div>
-            )
-        })
-        }
-      <div>{movie.genres}</div>
-    </div>
+     return (
+    <>
+      <img loading="lazy" src={`${movie.backdrop}`} alt={`movie ${movie.title}`} />
+    </>
   );
 };
 
