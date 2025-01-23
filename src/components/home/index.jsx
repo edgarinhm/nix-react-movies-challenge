@@ -7,6 +7,7 @@ import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 import MovieCatergory from "./movie-category/index.jsx";
 import useMovieStorage from "../../common/state-management/movie-storage.js";
 import useSharedStorage from "../../common/state-management/shared-storage.js";
+import { GetSearchMovies } from "../../functions/search-box-funtions.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -18,14 +19,7 @@ const HomePage = () => {
   const { searchQuery } = useSharedStorage();
 
   const moviesFiltered = searchQuery
-    ? movies.filter((movie) => {
-        const formatedSearch = searchQuery.toLowerCase();
-        return (
-          movie.title.toLowerCase().includes(formatedSearch) ||
-          movie.overview.toLowerCase().includes(formatedSearch) ||
-          movie.cast.join(",").toLowerCase().includes(formatedSearch)
-        );
-      })
+    ? GetSearchMovies(searchQuery, movies)
     : movies;
 
   useEffect(() => {
