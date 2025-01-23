@@ -6,7 +6,7 @@ import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 import MovieCatergory from "./movie-category/index.jsx";
 import useMovieStorage from "../../common/state-management/movie-storage.js";
 import useSharedStorage from "../../common/state-management/shared-storage.js";
-import { GetSearchMovies } from "../../functions/search-box-funtions.js";
+import { GetSearchMovies } from "../../common/functions/search-box-funtions.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
