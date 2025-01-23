@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./home.css";
 import { SERVER_SIDE_ERROR } from "../../common/constants/messages/error-messages";
 import { GetMovies } from "../../common/services/movie-service";
-import MovieCard from "./movie-card.jsx";
 import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 import MovieCatergory from "./movie-category/index.jsx";
 import useMovieStorage from "../../common/state-management/movie-storage.js";

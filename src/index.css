@@ -18,11 +18,11 @@
   box-sizing: border-box;
 }
 
-
 body {
   margin: 0;
   display: flex;
   min-width: 320px;
   min-height: 100vh;
   background: #ffffff;
+  color: #000000;
 }
