@@ -35,6 +35,7 @@
         "/infrastructure/",
         "/mocks/",
         "/schemas/",
-        "src/shared/"
+        "src/shared/",
+        "src/common"
       ]
 }
