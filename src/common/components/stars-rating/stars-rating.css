@@ -1,0 +1,9 @@
+.stars-rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.stars-rating-container svg {
+  width: 32px;
+  height: 32px;
+}
