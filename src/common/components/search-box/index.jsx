@@ -9,7 +9,8 @@ const SearchBox = ({ value = "", onChange, placeholder }) => {
       </span>
       <input
         type="text"
-        aria-label="search box"
+        role="searchbox"
+        aria-label="searchbox"
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder ?? ""}
