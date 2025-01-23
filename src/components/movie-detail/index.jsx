@@ -16,7 +16,11 @@ const MovieDetailPage = () => {
   return (
     <div className="movie-datail-card">
       <div className="movie-poster">
-        <img src={movie?.poster} alt={`poster ${movie?.title}`} />
+        <img
+          loading={"lazy"}
+          src={movie?.poster}
+          alt={`poster ${movie?.title}`}
+        />
       </div>
       <div className="movie-details">
         <div className="movie-title-group">
