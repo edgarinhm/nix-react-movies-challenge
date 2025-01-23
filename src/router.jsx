@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
+import { homeRoute, movieDetailRoute } from "./routes";
 
 const HomePage = lazy(() => import("./components/home"));
 const MovieDetailPage = lazy(() => import("./components/movie-detail"));
@@ -9,9 +10,9 @@ const MovieDetailPage = lazy(() => import("./components/movie-detail"));
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path={homeRoute} element={<Layout />}>
         <Route
-          path={"/"}
+          path={homeRoute}
           element={
             <Suspense fallback={"...Loading"}>
               <HomePage />
@@ -19,7 +20,7 @@ const Router = () => {
           }
         />
         <Route
-          path={"/detail/:id"}
+          path={`${movieDetailRoute.name}/${movieDetailRoute.param}`}
           element={
             <Suspense fallback={"...Loading"}>
               <MovieDetailPage />
