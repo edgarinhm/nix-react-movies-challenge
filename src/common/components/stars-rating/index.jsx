@@ -1,8 +1,9 @@
 import { AiFillStar } from "react-icons/ai";
 import "./stars-rating.css";
+import { GetAverageRate } from "../../functions/stars-rating-function";
 
 const StarsRanking = ({ rating }) => {
-  const averageRate = (rating ?? 0) / 10;
+  const averageRate = GetAverageRate(rating ?? 0);
   return (
     <span className="stars-rating-container">
       {Array.from({ length: 5 }).map((start, index) => {
