@@ -28,7 +28,6 @@ const HomePage = () => {
       })
     : movies;
 
-  console.log("searchQuery", searchQuery, "movies", movies);
   useEffect(() => {
     const loadMoviesData = async () => {
       setIsLoading(true);
