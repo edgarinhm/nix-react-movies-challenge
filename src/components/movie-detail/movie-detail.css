@@ -12,4 +12,9 @@
 .movie-title-group {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.movie-description {
+  margin-top: 1rem;
 }
