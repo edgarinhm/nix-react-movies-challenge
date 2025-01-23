@@ -6,6 +6,7 @@ import MovieCard from "./movie-card.jsx";
 import { MoviesMockData } from "../../common/mocks/movies-mock-data.js";
 import MovieCatergory from "./movie-category/index.jsx";
 import useMovieStorage from "../../common/state-management/movie-storage.js";
+import useSharedStorage from "../../common/state-management/shared-storage.js";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -14,7 +15,20 @@ const HomePage = () => {
   const [genres, setGenres] = useState([]);
 
   const { setMoviesState } = useMovieStorage();
+  const { searchQuery } = useSharedStorage();
 
+  const moviesFiltered = searchQuery
+    ? movies.filter((movie) => {
+        const formatedSearch = searchQuery.toLowerCase();
+        return (
+          movie.title.toLowerCase().includes(formatedSearch) ||
+          movie.overview.toLowerCase().includes(formatedSearch) ||
+          movie.cast.join(",").toLowerCase().includes(formatedSearch)
+        );
+      })
+    : movies;
+
+  console.log("searchQuery", searchQuery, "movies", movies);
   useEffect(() => {
     const loadMoviesData = async () => {
       setIsLoading(true);
@@ -30,7 +44,7 @@ const HomePage = () => {
         });
         setGenres([...moviesByGenre]);
         setMovies(MoviesMockData);
-        setMoviesState(MoviesMockData)
+        setMoviesState(MoviesMockData);
       } catch (error) {
         setErrorMessage(SERVER_SIDE_ERROR);
       } finally {
@@ -50,14 +64,14 @@ const HomePage = () => {
       {!isLoading && (
         <>
           {genres.map((genre) => {
-            const moviesFiltered = movies.filter((movie) =>
+            const moviesByGenre = moviesFiltered.filter((movie) =>
               movie.genres.includes(genre)
             );
             return (
               <MovieCatergory
                 key={`${genre}`}
                 categoryTitle={genre}
-                movies={moviesFiltered}
+                movies={moviesByGenre}
               />
             );
           })}
