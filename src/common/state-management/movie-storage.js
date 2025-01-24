@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const initialState = {
-    movies:[]
+    movies: [],
 }
 
 const movieStorage = ((set) => {

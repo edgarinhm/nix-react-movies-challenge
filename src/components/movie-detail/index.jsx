@@ -3,15 +3,28 @@ import { useParams } from "react-router-dom";
 import useMovieStorage from "../../common/state-management/movie-storage";
 import "./movie-detail.css";
 import StarsRanking from "../../common/components/stars-rating";
+import { useLocalStorage } from "../../common/state-management/local-storage";
+import { LocalStorageKeys } from "../../common/constants/local-storage-keys";
 
 const MovieDetailPage = () => {
   const params = useParams();
   const { movies } = useMovieStorage();
-  const movie = useMemo(
-    () => movies.find((movie) => movie.id === params?.id),
-    [params?.id]
-  );
+  const updateStorage = useLocalStorage((state) => state.updateStorage);
+  const movieDetail = useLocalStorage((state) => state.movieDetail);
+
+  const movie = useMemo(() => {
+    const movie = movies.find((movie) => movie.slug === params?.id);
+    if (movie) {
+      updateStorage(LocalStorageKeys.movieDetail, movie);
+    }
+    return movieDetail?.slug === params?.id ? movieDetail : movie;
+  }, [params?.id]);
+
   const releasedOn = new Date(movie?.released_on);
+
+  if (!movie) {
+    return null; //TODO:create error page and redirect to error boundary
+  }
 
   return (
     <div className="movie-datail-card">
