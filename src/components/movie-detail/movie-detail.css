@@ -18,3 +18,27 @@
 .movie-description {
   margin-top: 1rem;
 }
+
+@media (max-width: 600px) {
+  .movie-datail-card {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .movie-poster {
+    max-height: 50dvh;
+  }
+
+  .movie-poster > img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .movie-title-group {
+    flex-direction: column-reverse;
+  }
+  .stars-rating-container {
+    justify-content: center;
+  }
+}
