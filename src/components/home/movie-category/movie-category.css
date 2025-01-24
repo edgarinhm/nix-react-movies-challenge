@@ -1,14 +1,14 @@
-.movie-caterogy-container h6 {
-    margin: 0.5rem 0;
-  }
+.movie-category-container h6 {
+  margin: 0.5rem 0;
+}
 
-.movie-caterogy-row {
+.movie-category-row {
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
   flex-wrap: nowrap;
   cursor: pointer;
 }
-.movie-caterogy-row img{
-  width: 320px; 
+.movie-category-row img {
+  width: 320px;
 }
