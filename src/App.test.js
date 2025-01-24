@@ -1,4 +1,3 @@
-
 import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 import { act, render, screen, waitFor } from "@testing-library/react";
@@ -21,7 +20,7 @@ describe("App", () => {
     });
   });
 
-  it.only("Filter movies by searbox value 'batman'", async () => {
+  it("Filter movies by searbox value 'batman'", async () => {
     await act(async () => {
       renderWithRouter(<App />, mockBasePath);
     });
