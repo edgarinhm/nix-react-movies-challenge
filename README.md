@@ -9,7 +9,7 @@ Your assignment is to implement a movie streaming dashboard using JavaScript and
 ![home page](image.png)
 
 ### Test Coverage
-![test coverage](image-1.png)
+![test coverage](image-2.png)
 
 ### Tasks
 
