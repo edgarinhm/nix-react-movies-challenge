@@ -5,6 +5,7 @@ import "./movie-detail.css";
 import StarsRanking from "../../common/components/stars-rating";
 import { useLocalStorage } from "../../common/state-management/local-storage";
 import { LocalStorageKeys } from "../../common/constants/local-storage-keys";
+import NotFoundPage from "../layout/not-found";
 
 const MovieDetailPage = () => {
   const params = useParams();
@@ -23,7 +24,7 @@ const MovieDetailPage = () => {
   const releasedOn = new Date(movie?.released_on);
 
   if (!movie) {
-    return null; //TODO:create error page and redirect to error boundary
+    return <NotFoundPage />;
   }
 
   return (
