@@ -3,9 +3,17 @@ import MovieDetailPage from "./";
 import useMovieStorage from "../../common/state-management/movie-storage";
 import { MoviesMockData } from "../../common/mocks/movies-mock-data";
 import { useParams } from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
+import { PAGE_NOT_FOUND } from "../../common/constants/messages/error-messages";
 
 jest.mock("../../common/state-management/movie-storage");
 jest.mock("react-router-dom");
+
+const mockRenderWithErrorBoundary = (children) => {
+  return render(
+    <ErrorBoundary fallback={<ErrorBoundary />}>{children}</ErrorBoundary>
+  );
+};
 
 describe("MovieDetailPage", () => {
   beforeEach(() => {
@@ -16,13 +24,13 @@ describe("MovieDetailPage", () => {
   });
 
   it(`Movie title should be "${MoviesMockData[0].title}"`, async () => {
-    render(<MovieDetailPage />);
+    mockRenderWithErrorBoundary(<MovieDetailPage />);
     expect(screen.getByText(MoviesMockData[0].title)).toBeInTheDocument();
   });
 
-  it(`Movie title should null "${MoviesMockData[0].title}"`, async () => {
-    useParams.mockReturnValue({ id: "the-dark-knight-20" });
-    render(<MovieDetailPage />);
-    expect(screen.queryByText(MoviesMockData[0].title)).not.toBeInTheDocument();
+  it(`Movie not found should show "404 not found"`, async () => {
+    useParams.mockReturnValue({ id: "movie-not-found" });
+    mockRenderWithErrorBoundary(<MovieDetailPage />);
+    expect(screen.getByText(PAGE_NOT_FOUND)).toBeInTheDocument();
   });
 });
