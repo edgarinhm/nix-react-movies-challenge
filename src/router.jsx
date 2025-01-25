@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout";
 import { homeRoute, movieDetailRoute } from "./routes";
+import NotFoundPage from "./components/layout/not-found";
 
 const HomePage = lazy(() => import("./components/home"));
 const MovieDetailPage = lazy(() => import("./components/movie-detail"));
@@ -28,6 +29,7 @@ const Router = () => {
           }
         />
       </Route>
+      <Route path={`*`} element={<NotFoundPage />} />
     </Routes>
   );
 };
